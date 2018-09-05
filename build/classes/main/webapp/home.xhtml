@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHL 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html	xmlns 		= "http://www.w3.org/1999/xhtml"   
+		xmlns:h 	= "http://java.sun.com/jsf/html"
+		xmlns:ui 	= "http://java.sun.com/jsf/facelets">
+   
+	<head>
+   
+		<title>JSF-Toybox</title>
+	   
+		<ui:insert name="imports">
+			<ui:include src="templates/imports.xhtml" />
+		</ui:insert>
+	   
+	</head>
+
+	<h:body>
+		
+		<ui:insert name="header">
+			<ui:include src="templates/header.xhtml" />
+		</ui:insert>
+
+		
+		<main role="main" class="container">
+			#{splashController.message}
+		</main>
+   
+		   
+		<ui:insert name="footer">
+			<ui:include src="templates/footer.xhtml" />
+		</ui:insert>
+   
+	</h:body>
+</html>
