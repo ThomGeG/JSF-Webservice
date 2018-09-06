@@ -13,21 +13,23 @@
 							<small>A place for doing JSF-things!</small>
 						</div>
 						<div class="col align-self-end">
-							<ui:fragment rendered="#{not userManager.isSignedIn}">
+							<ui:fragment rendered="#{not userManager.isSignedIn()}">
 								<small>Hello stranger, care to sign-in? Or maybe <h:link value="sign-up" outcome="signup" />?</small>
-								<form>
+								<h:form>
 									<div class="form-group">
-										<h:inputText class="form-control" id="username" value="#{signIn.username}" pt:placeholder="Username" />
+										<h:inputText class="form-control" value="#{loginRequest.username}" pt:placeholder="Username" />
 									</div>
 									<div class="form-group">
-										<h:inputSecret class="form-control" id="password" vlaue="#{signIn.password}" pt:placeholder="Password" />
+										<h:inputSecret class="form-control" value="#{loginRequest.password}" pt:placeholder="Password" />
 									</div>
-									<h:commandButton value="" action="#{signIn.submit}" class="true-invisible" />
-								</form>
+									<h:commandButton action="#{loginRequest.submit()}" class="true-invisible" />
+								</h:form>
 							</ui:fragment>
-							<ui:fragment rendered="#{userManager.isSignedIn}">
-								<small>Howdy, #{userManager.getCurrentUser.firstname}.</small>
-								<h:commandLink action="#{userManager.signOut}">Sign out.</h:commandLink>
+							<ui:fragment rendered="#{userManager.isSignedIn()}">
+								<small>
+									Howdy, #{userManager.getCurrentUser().username}.
+									<h:link value="Sign out" outcome="sign-out" />.
+								</small>
 							</ui:fragment>
 						</div>
 					</div>

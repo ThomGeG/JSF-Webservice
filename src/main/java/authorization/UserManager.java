@@ -2,23 +2,27 @@ package main.java.authorization;
 
 import java.io.Serializable;
 
-import javax.inject.Named;
-import javax.inject.Inject;
-import javax.enterprise.context.SessionScoped;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
-@Named
 @SessionScoped
+@ManagedBean(name="userManager", eager=true)
 public class UserManager implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@Inject
-	private UserService userService;
-	
 	private User currentUser;
 	
+	@ManagedProperty(value="#{userService}")
+	private UserService userService;
+	
+	public void setUserService(UserService userService) {
+		this.userService = userService;
+	}
+	
 	public boolean isSignedIn() {
-		return currentUser != null;
+		return getCurrentUser() != null;
 	}
 	
 	public User getCurrentUser() {
@@ -26,7 +30,16 @@ public class UserManager implements Serializable {
 	}
 	
 	public String signIn(String username, String password) {
-		return null; //TODO
+		
+		User u = userService.getUser(username);
+		
+		if(u == null || password.compareTo(u.getPassword()) != 0) {
+			return "signup";
+		}
+		
+		this.currentUser = u;
+		return "other"; 
+		
 	}
 	
 	public String signOut() {
