@@ -3,3 +3,13 @@
 	padding-top: 16px;
 	padding-bottom: 16px;
 }
+
+.true-invisible {
+	visibility: hidden;
+	display: none;
+	padding: 0px;
+	margin: 0px;
+	border: 0px;
+	width: 0px;
+	height: 0px;
+}

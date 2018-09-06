@@ -1,6 +1,7 @@
 <html	xmlns = "http://www.w3.org/1999/xhtml"  
-		xmlns:h 	= "http://java.sun.com/jsf/html" 
-		xmlns:ui = "http://java.sun.com/jsf/facelets">
+		xmlns:h = "http://java.sun.com/jsf/html" 
+		xmlns:ui = "http://java.sun.com/jsf/facelets"
+		xmlns:pt = "http://xmlns.jcp.org/jsf/passthrough">
 
 	<ui:composition> 
 	   <h:body>
@@ -13,14 +14,15 @@
 						</div>
 						<div class="col align-self-end">
 							<ui:fragment rendered="#{not userManager.isSignedIn}">
-								<small>Hello stranger, care to sign-in? Or maybe sign-up?</small>
+								<small>Hello stranger, care to sign-in? Or maybe <h:link value="sign-up" outcome="signup" />?</small>
 								<form>
 									<div class="form-group">
-										<input type="email"	class="form-control" id="id" placeholder="User" />
+										<h:inputText class="form-control" id="username" value="#{signIn.username}" pt:placeholder="Username" />
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control" id="password" placeholder="Password" />
+										<h:inputSecret class="form-control" id="password" vlaue="#{signIn.password}" pt:placeholder="Password" />
 									</div>
+									<h:commandButton value="" action="#{signIn.submit}" class="true-invisible" />
 								</form>
 							</ui:fragment>
 							<ui:fragment rendered="#{userManager.isSignedIn}">
