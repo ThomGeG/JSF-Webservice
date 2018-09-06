@@ -12,15 +12,15 @@ public class User implements Serializable {
 	public User(String username, String password) {
 		setUsername(username);
 		setPassword(password);
-		System.out.println("Created new user: " + username);
+		System.out.println("Created new user: " + this.username);
 	}
 	
 	public void setUsername(String username) {
-		this.username = username.toLowerCase();
+		this.username = username;
 	}
 	
 	public String getUsername() {
-		return username.toLowerCase();
+		return username;
 	}
 
 	public void setPassword(String password) {
