@@ -10,16 +10,16 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 
-	public String phoneNumber;
-	public String firstName;
-	public String lastName;
-	public String email;
-	public String address;
-	public String state;
-	public String city;
-	public String zip;
-	public Date birthDate;
-	public boolean newsletter;
+	private String phoneNumber;
+	private String firstName;
+	private String lastName;
+	private String email;
+	private String address;
+	private String state;
+	private String city;
+	private String zip;
+	private Date birthDate;
+	private boolean newsletter;
 	
 	public User(String username, String password) {
 		setUsername(username);
