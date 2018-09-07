@@ -12,10 +12,6 @@ public class UserServiceImpl implements UserService {
 
 	private final Map<String, User> users = new ConcurrentHashMap<>();
 	
-	public UserServiceImpl() {
-		saveUser(new User("Tom", "password")); //TODO - Delete this dummy user
-	}
-	
 	@Override
 	public User getUser(String username) {		
 		return users.get(username.toLowerCase());
