@@ -43,7 +43,11 @@ public class UserManager implements Serializable {
 	}
 	
 	public String signOut() {
-		return null; //TODO
+		
+		currentUser = null;
+		
+		return "home"; //TODO
+		
 	}
 	
 	public String save(User u) {
