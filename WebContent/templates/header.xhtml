@@ -15,7 +15,7 @@
 						<div class="col align-items-start text-right">
 							<ui:fragment rendered="#{not userManager.isSignedIn()}">
 								<h:form>
-									<small>Hello stranger, care to sign-in? Or maybe <h:link value="sign-up" outcome="signup" />?</small>
+									<small>Hello stranger, care to sign-in? Or maybe <h:link value="sign-up" outcome="user_details" />?</small>
 									<div class="form-group">
 										<h:inputText class="form-control form-control-sm" value="#{loginRequest.username}" pt:placeholder="Username" />
 									</div>
@@ -27,7 +27,7 @@
 							</ui:fragment>
 							<ui:fragment rendered="#{userManager.isSignedIn()}">
 								<h:form>
-									<small>Howdy, #{userManager.getCurrentUser().username}.</small>
+									<small>Howdy, <h:link value="#{userManager.getCurrentUser().username}" outcome="user_details" />.</small>
 									<h:commandLink action="#{userManager.signOut()}">
 										<button type="button" class="btn btn-outline-danger btn-sm btn-circle">
 											<i class="fas fa-sign-out-alt"></i>

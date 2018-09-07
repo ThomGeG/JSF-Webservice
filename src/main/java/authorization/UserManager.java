@@ -52,7 +52,9 @@ public class UserManager implements Serializable {
 	}
 	
 	public String save(User u) {
-		return null; //TODO
+		userService.saveUser(u);
+		currentUser = u;
+		return "home";
 	}
 	
 }

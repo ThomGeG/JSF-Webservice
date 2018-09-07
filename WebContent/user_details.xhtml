@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHL 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html	xmlns = "http://www.w3.org/1999/xhtml"  
+		xmlns:h = "http://java.sun.com/jsf/html" 
+		xmlns:f = "http://xmlns.jcp.org/jsf/core"
+		xmlns:ui = "http://java.sun.com/jsf/facelets"
+		xmlns:pt = "http://xmlns.jcp.org/jsf/passthrough">
+   
+	<h:head>
+   
+		<title>JSF-Webservice</title>
+	   
+		<ui:insert name="imports">
+			<ui:include src="templates/imports.xhtml" />
+		</ui:insert>
+	   
+	</h:head>
+
+	<h:body>
+	
+		<f:metadata>
+			<f:viewAction action="#{userDetails.onLoad}" />
+		</f:metadata>
+		
+		<!-- Content goes here! -->
+		
+		<div class="container">
+		
+			<h:form>
+
+				<div class="form-row">
+					<div class="form-group col-sm-8">
+						<label for="username">Username:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.username}" pt:placeholder="Username" />
+					</div>
+					<div class="form-group col-sm-4">
+						<label for="password">Password:</label>
+						<h:inputSecret class="form-control form-control-sm" value="#{userDetails.user.password}" pt:placeholder="Password" />
+					</div>
+				</div>
+				
+				<div class="form-row justify-content-end">
+					<div class="form-group col-sm-4">
+						<label for="con_password">Confirm Password:</label>
+						<h:inputSecret class="form-control form-control-sm" value="#{userDetails.user.password}" pt:placeholder="Confirm password" />
+					</div>
+				</div>
+				
+				<div class="form-row">
+					<div class="form-group col-sm-6">
+						<label for="first_name">First name:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.firstName}" pt:placeholder="First name" />
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="last_name">Last name:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.lastName}" pt:placeholder="Last name" />
+					</div>
+				</div>	
+				
+				<div class="form-row">
+					<div class="form-group col-sm-8">
+						<label for="email">Email:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.email}" pt:placeholder="Email" />
+					</div>
+					<div class="form-group col-sm-4">
+						<label for="phone_num">Phone #:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.phoneNumber}" pt:placeholder="Phone number" />
+					</div>
+				</div>
+				
+				<div class="form-row align-items-end">
+					<div class="form-group col-sm-6">
+						<label for="address">Address:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.address}" pt:placeholder="Address" />
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="city">City:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.city}" pt:placeholder="City" />
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="state">State:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.state}" pt:placeholder="State" />
+					</div>
+					<div class="form-group col-sm-2">
+						<label for="zip">Zip:</label>
+						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.zip}" pt:placeholder="Zip" />
+					</div>
+				</div>
+
+				<div class="form-row align-items-end">
+					<div class="form-group col-sm-8">
+						<label for="birthdate">Birth date:</label>
+						<h:inputText class="form-control form-control-sm" pt:type="date" value="#{userDetails.user.birthDate}" pt:placeholder="Birth date">
+							<f:convertDateTime pattern="yyyy-MM-dd" />
+						</h:inputText>
+					</div>
+					<div class="form-group col-sm-4 ">
+						<h:selectBooleanCheckbox id="newsletter" value="#{userDetails.user.newsletter}" />
+						<label class="form-check-label" for="newsletter">
+							Subscribe to Newsletter
+						</label>
+					</div>
+				</div>
+				
+				<h:commandButton type="submit" class="btn btn-primary" action="#{userDetails.submit()}" value="Submit"/>
+			
+			</h:form>
+		</div>
+
+		<!-- Content ends here! -->
+
+		<ui:insert name="footer">
+			<ui:include src="templates/footer.xhtml" />
+		</ui:insert>
+   
+	</h:body>
+</html>
