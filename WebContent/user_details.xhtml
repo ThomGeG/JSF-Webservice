@@ -24,25 +24,24 @@
 		
 		<!-- Content goes here! -->
 		
-		<div class="container">
-		
+		<div class="container jumbotron">
+			
 			<h:form>
 
 				<div class="form-row">
 					<div class="form-group col-sm-8">
 						<label for="username">Username:</label>
-						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.username}" pt:placeholder="Username" />
+						<h:inputText id="username" class="form-control form-control-sm" value="#{userDetails.user.username}" pt:placeholder="Username" 
+							required="true" requiredMessage="Please enter a username."
+						/>
 					</div>
 					<div class="form-group col-sm-4">
 						<label for="password">Password:</label>
 						<h:inputSecret class="form-control form-control-sm" value="#{userDetails.user.password}" pt:placeholder="Password" />
-					</div>
-				</div>
-				
-				<div class="form-row justify-content-end">
-					<div class="form-group col-sm-4">
-						<label for="con_password">Confirm Password:</label>
-						<h:inputSecret class="form-control form-control-sm" value="#{userDetails.user.password}" pt:placeholder="Confirm password" />
+						
+						<div class="invalid-feedback">
+							<h:message for="password" />
+						</div>
 					</div>
 				</div>
 				
@@ -64,7 +63,13 @@
 					</div>
 					<div class="form-group col-sm-4">
 						<label for="phone_num">Phone #:</label>
-						<h:inputText class="form-control form-control-sm" value="#{userDetails.user.phoneNumber}" pt:placeholder="Phone number" />
+						<h:inputText id="phone_num" class="form-control form-control-sm" value="#{userDetails.user.phoneNumber}" pt:placeholder="Phone number"
+							validatorMessage="Please enter a valid phone number.">
+							<f:validateRegex pattern="([0-9]{4}-?[0-9]{3}-?[0-9]{3})?" />
+						</h:inputText>
+						<div class="invalid-feedback">
+							<h:message for="phone_num" />
+						</div>
 					</div>
 				</div>
 				
