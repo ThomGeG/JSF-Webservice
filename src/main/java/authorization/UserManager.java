@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 
 @SessionScoped
 @ManagedBean(name="userManager", eager=true)
@@ -44,9 +45,9 @@ public class UserManager implements Serializable {
 	
 	public String signOut() {
 		
-		currentUser = null;
+		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		
-		return "home"; //TODO
+		return "home?faces-redirect=true";
 		
 	}
 	
