@@ -29,11 +29,7 @@ public class UserDetails {
 	}
 	
 	public String submit() {
-		
-		userManager.save(user);
-		
-		return "home";
-		
+		return userManager.save(user);
 	}
 
 	
