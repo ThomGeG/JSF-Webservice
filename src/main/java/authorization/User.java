@@ -1,13 +1,17 @@
 package main.java.authorization;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.io.Serializable;
+
+import javax.validation.constraints.*;
 
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
+	@NotNull
 	private String username;
+	@NotNull
 	private String password;
 
 	private String phoneNumber;
@@ -18,7 +22,10 @@ public class User implements Serializable {
 	private String state;
 	private String city;
 	private String zip;
+	
+	@Past(message="You must be born in the past...")
 	private Date birthDate;
+	
 	private boolean newsletter;
 	
 	public User(String username, String password) {
