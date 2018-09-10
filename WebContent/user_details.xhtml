@@ -85,7 +85,7 @@
 					</div>
 				</div>
 				
-				<div class="form-row align-items-end">
+				<div class="form-row">
 					<div class="form-group col-sm-6">
 						<label for="details:address">Address:</label>
 						<h:inputText id="address" class="form-control form-control-sm #{facesContext.getCurrentInstance().getMessageList('details:address').size() > 0 ? 'is-invalid' : ''}" value="#{userDetails.user.address}" pt:placeholder="Address" />
@@ -102,14 +102,26 @@
 					</div>
 					<div class="form-group col-sm-2">
 						<label for="details:state">State:</label>
-						<h:inputText id="state" class="form-control form-control-sm #{facesContext.getCurrentInstance().getMessageList('details:state').size() > 0 ? 'is-invalid' : ''}" value="#{userDetails.user.state}" pt:placeholder="State" />
+						<h:selectOneMenu id="state" class="form-control form-control-sm #{facesContext.getCurrentInstance().getMessageList('details:state').size() > 0 ? 'is-invalid' : ''}" value="#{userDetails.user.state}" pt:placeholder="State">
+							<f:selectItem itemValue="ACT" itemLabel="ACT" />
+							<f:selectItem itemValue="NSW" itemLabel="NSW" />
+							<f:selectItem itemValue="QLD" itemLabel="QLD" />
+							<f:selectItem itemValue="SA" itemLabel="SA" />
+							<f:selectItem itemValue="TAS" itemLabel="TAS" />
+							<f:selectItem itemValue="VIC" itemLabel="VIC" />
+							<f:selectItem itemValue="WA" itemLabel="WA" />
+						</h:selectOneMenu>
+						
 						<div class="invalid-feedback">
 							<h:message for="state" />
 						</div>
 					</div>
 					<div class="form-group col-sm-2">
 						<label for="details:zip">Zip:</label>
-						<h:inputText id="zip" class="form-control form-control-sm #{facesContext.getCurrentInstance().getMessageList('details:zip').size() > 0 ? 'is-invalid' : ''}" value="#{userDetails.user.zip}" pt:placeholder="Zip" />
+						<h:inputText id="zip" class="form-control form-control-sm #{facesContext.getCurrentInstance().getMessageList('details:zip').size() > 0 ? 'is-invalid' : ''}" value="#{userDetails.user.zip}" pt:placeholder="Zip" 
+						validatorMessage="Please enter a valid zip code.">
+							<f:validateRegex pattern="([0-9]{4})?" />
+						</h:inputText>
 						<div class="invalid-feedback">
 							<h:message for="zip" />
 						</div>
